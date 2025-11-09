@@ -101,14 +101,16 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         }
         private void BuscarPlanta()
         {
-            if (string.IsNullOrWhiteSpace(txtId.Text))
+            if (string.IsNullOrWhiteSpace(txtId.Text) ||
+                    !int.TryParse(txtId.Text, out int id) ||
+                    id <= 0)
             {
-                MessageBox.Show("Por favor, digite el id de la planta que quiere buscar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El ID debe ser un número entero positivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var plantaExistente = serviciosPlanta.BuscarPorId(int.Parse(txtId.Text.Trim()));
-            if (plantaExistente == null)
+            if (plantaExistente.Entidad == null)
             {
                 MessageBox.Show("No se encontró una planta con el ID proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -141,6 +143,13 @@ namespace PROYECTO_RIEGO_AUTOMATICO
                 string.IsNullOrWhiteSpace(txtNivelLuz.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtId.Text) ||
+                !int.TryParse(txtId.Text, out int id) ||
+                id <= 0)
+            {
+                MessageBox.Show("El ID debe ser un número entero positivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (!int.TryParse(txtId.Text.Trim(), out _))

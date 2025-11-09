@@ -170,7 +170,6 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.button4 = new System.Windows.Forms.Button();
             this.btnHam = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ImagenTemperatura = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -213,7 +212,6 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.tabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenTemperatura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -1127,7 +1125,6 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.PanelPrincipal.Controls.Add(this.panel1);
             this.PanelPrincipal.Controls.Add(this.panel12);
             this.PanelPrincipal.Controls.Add(this.lbFechaInicio);
-            this.PanelPrincipal.Controls.Add(this.pictureBox4);
             this.PanelPrincipal.Controls.Add(this.panel5);
             this.PanelPrincipal.Controls.Add(this.panel3);
             this.PanelPrincipal.Controls.Add(this.panel4);
@@ -1150,7 +1147,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.panel1.Controls.Add(this.label26);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.lblHumedad);
-            this.panel1.Location = new System.Drawing.Point(400, 288);
+            this.panel1.Location = new System.Drawing.Point(758, 372);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(245, 135);
             this.panel1.TabIndex = 26;
@@ -1183,10 +1180,10 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
             this.panel12.Controls.Add(this.chartClima);
             this.panel12.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
-            this.panel12.Location = new System.Drawing.Point(0, 310);
+            this.panel12.Location = new System.Drawing.Point(365, 213);
             this.panel12.Name = "panel12";
             this.panel12.Padding = new System.Windows.Forms.Padding(5);
-            this.panel12.Size = new System.Drawing.Size(319, 299);
+            this.panel12.Size = new System.Drawing.Size(319, 392);
             this.panel12.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.panel12.TabIndex = 31;
             this.panel12.Text = "panel12";
@@ -1219,7 +1216,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             series4.Name = "DatosClimáticos";
             series4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.BrightPastel;
             this.chartClima.Series.Add(series4);
-            this.chartClima.Size = new System.Drawing.Size(328, 299);
+            this.chartClima.Size = new System.Drawing.Size(328, 392);
             this.chartClima.TabIndex = 28;
             this.chartClima.Text = "chart1";
             title4.Name = "Title1";
@@ -1230,7 +1227,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.lbFechaInicio.AutoSize = true;
             this.lbFechaInicio.Font = new System.Drawing.Font("Microsoft JhengHei", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFechaInicio.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbFechaInicio.Location = new System.Drawing.Point(370, 470);
+            this.lbFechaInicio.Location = new System.Drawing.Point(383, 173);
             this.lbFechaInicio.Name = "lbFechaInicio";
             this.lbFechaInicio.Size = new System.Drawing.Size(234, 37);
             this.lbFechaInicio.TabIndex = 30;
@@ -1312,7 +1309,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.lbConec);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Location = new System.Drawing.Point(400, 156);
+            this.panel4.Location = new System.Drawing.Point(27, 394);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(245, 111);
             this.panel4.TabIndex = 0;
@@ -1705,17 +1702,6 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.pictureBox5.TabIndex = 25;
             this.pictureBox5.TabStop = false;
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Image = global::PROYECTO_FINAL.Properties.Resources.riego_por_goteo;
-            this.pictureBox4.Location = new System.Drawing.Point(716, 310);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(304, 295);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 29;
-            this.pictureBox4.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PROYECTO_FINAL.Properties.Resources.drenaje;
@@ -1859,7 +1845,6 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.tabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenTemperatura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1976,7 +1961,6 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCultivo;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartClima;
         private Label lbFechaInicio;
-        private PictureBox pictureBox4;
         private ReaLTaiizor.Controls.Panel panel12;
         private Label label14;
         private DataGridView grilla2;

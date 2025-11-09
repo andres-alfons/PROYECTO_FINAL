@@ -1,6 +1,7 @@
 ﻿using BLL;
 using ENTITY;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -73,7 +74,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtUusario.Text) || string.IsNullOrWhiteSpace(txtContraseña.Text))
             {
-                MessageBox.Show("Por favor, complete todos los campos y no pueden haber espacios." , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, complete todos los campos y no pueden haber espacios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (cbRol.SelectedIndex == -1)
@@ -81,9 +82,11 @@ namespace PROYECTO_RIEGO_AUTOMATICO
                 MessageBox.Show("Por favor, seleccione un rol.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (int.Parse(txtId.Text) <= 0)
+            if (string.IsNullOrWhiteSpace(txtId.Text) ||
+                !int.TryParse(txtId.Text, out int id) ||
+                id <= 0)
             {
-                MessageBox.Show("El ID de usuario debe ser un número positivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El ID debe ser un número entero positivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (!txtEmail.Text.Contains("@"))
@@ -92,7 +95,29 @@ namespace PROYECTO_RIEGO_AUTOMATICO
                 txtEmail.Focus();
                 return false;
             }
+            if (!ValidarEmail(txtEmail.Text))
+            {
+                errorProvider1.SetError(txtEmail, "El correo no tiene un formato válido (ejemplo: usuario@dominio.com)");
+                MessageBox.Show("⚠️ El correo no tiene un formato válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtContraseña.Text) || txtContraseña.Text.Length < 4)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Si pasa la validación
+            errorProvider1.Clear();
             return true;
+        }
+        private bool ValidarEmail(string email)
+        {
+            // Expresión regular igual a la usada en Oracle
+            string patron = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
+
+            // Retorna true si el correo cumple el patrón
+            return Regex.IsMatch(email, patron);
         }
         private void label2_Click(object sender, EventArgs e)
         {
@@ -101,6 +126,8 @@ namespace PROYECTO_RIEGO_AUTOMATICO
 
         private void NuevoUsuario_Load_1(object sender, EventArgs e)
         {
+            picVerContraseña.Image = PROYECTO_FINAL.Properties.Resources.monkey_599687;
+            txtContraseña.UseSystemPasswordChar = true;
 
         }
 
@@ -115,9 +142,31 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         {
             if (Obtenerdatos())
             {
-                LimpiarCampos();
                 return;
+            }
+        }
+
+        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private bool mostrandoContraseña = false;
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+
+            mostrandoContraseña = !mostrandoContraseña;
+            if (mostrandoContraseña)
+            {
+                txtContraseña.UseSystemPasswordChar = false;
+                picVerContraseña.Image = PROYECTO_FINAL.Properties.Resources.Ojo_Cerrado;
+            }
+            else
+            {
+                txtContraseña.UseSystemPasswordChar = true;
+                picVerContraseña.Image = PROYECTO_FINAL.Properties.Resources.monkey_599687;
             }
         }
     }
 }
+

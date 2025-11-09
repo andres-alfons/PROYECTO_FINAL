@@ -55,7 +55,10 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new ReaLTaiizor.Controls.Panel();
+            this.nightControlBox1 = new ReaLTaiizor.Controls.NightControlBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -142,9 +145,9 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.panel1.Controls.Add(this.txtNivelHumedad);
             this.panel1.Controls.Add(this.txtNivelTemperatura);
             this.panel1.Controls.Add(this.txtNivelLuz);
-            this.panel1.Location = new System.Drawing.Point(25, 34);
+            this.panel1.Location = new System.Drawing.Point(29, 79);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(474, 408);
+            this.panel1.Size = new System.Drawing.Size(474, 427);
             this.panel1.TabIndex = 28;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -166,7 +169,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.btnSubirImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSubirImagen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubirImagen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSubirImagen.Location = new System.Drawing.Point(155, 265);
+            this.btnSubirImagen.Location = new System.Drawing.Point(157, 225);
             this.btnSubirImagen.Name = "btnSubirImagen";
             this.btnSubirImagen.Size = new System.Drawing.Size(143, 38);
             this.btnSubirImagen.TabIndex = 39;
@@ -293,7 +296,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(25, 2);
+            this.button2.Location = new System.Drawing.Point(29, 47);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 34);
             this.button2.TabIndex = 31;
@@ -301,19 +304,60 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
+            this.panel2.Controls.Add(this.nightControlBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(5);
+            this.panel2.Size = new System.Drawing.Size(526, 41);
+            this.panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.panel2.TabIndex = 32;
+            this.panel2.Text = "panel2";
+            // 
+            // nightControlBox1
+            // 
+            this.nightControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nightControlBox1.BackColor = System.Drawing.Color.Transparent;
+            this.nightControlBox1.CloseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.nightControlBox1.CloseHoverForeColor = System.Drawing.Color.White;
+            this.nightControlBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nightControlBox1.DefaultLocation = true;
+            this.nightControlBox1.DisableMaximizeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
+            this.nightControlBox1.DisableMinimizeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
+            this.nightControlBox1.EnableCloseColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.nightControlBox1.EnableMaximizeButton = false;
+            this.nightControlBox1.EnableMaximizeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.nightControlBox1.EnableMinimizeButton = true;
+            this.nightControlBox1.EnableMinimizeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.nightControlBox1.Location = new System.Drawing.Point(387, 2);
+            this.nightControlBox1.MaximizeHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.nightControlBox1.MaximizeHoverForeColor = System.Drawing.Color.White;
+            this.nightControlBox1.MinimizeHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.nightControlBox1.MinimizeHoverForeColor = System.Drawing.Color.White;
+            this.nightControlBox1.Name = "nightControlBox1";
+            this.nightControlBox1.Size = new System.Drawing.Size(139, 31);
+            this.nightControlBox1.TabIndex = 0;
+            // 
             // PLANTAS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 464);
+            this.ClientSize = new System.Drawing.Size(526, 537);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PLANTAS";
             this.Text = "PLANTAS";
             this.Load += new System.EventHandler(this.PLANTAS_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -354,5 +398,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         private Button btnSubirImagen;
         private Button btnEliminar;
         private Button button3;
+        private ReaLTaiizor.Controls.Panel panel2;
+        private ReaLTaiizor.Controls.NightControlBox nightControlBox1;
     }
 }

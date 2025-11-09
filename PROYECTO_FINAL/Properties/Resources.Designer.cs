@@ -213,9 +213,39 @@ namespace PROYECTO_FINAL.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Monito {
+            get {
+                object obj = ResourceManager.GetObject("Monito", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap monkey_599687 {
+            get {
+                object obj = ResourceManager.GetObject("monkey_599687", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap norte {
             get {
                 object obj = ResourceManager.GetObject("norte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ojo_Cerrado {
+            get {
+                object obj = ResourceManager.GetObject("Ojo_Cerrado", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -2,6 +2,7 @@
 using ENTITY;
 using System;
 using System.Windows.Forms;
+using static Guna.UI2.WinForms.Suite.Descriptions;
 
 namespace PROYECTO_RIEGO_AUTOMATICO
 {
@@ -55,6 +56,8 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         }
 
         private void INICIAR_Load(object sender, EventArgs e) {
+            picVerContraseña.Image = PROYECTO_FINAL.Properties.Resources.monkey_599687;
+            txtContraseña.UseSystemPasswordChar = true;
         }
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
@@ -67,6 +70,27 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             NuevoUsuario nuevoUsuario = new NuevoUsuario();
             nuevoUsuario.Show();
             this.Hide();
+        }
+        private bool mostrandoContraseña = false;
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            mostrandoContraseña = !mostrandoContraseña;
+            if (mostrandoContraseña)
+            {
+                txtContraseña.UseSystemPasswordChar = false;
+                picVerContraseña.Image = PROYECTO_FINAL.Properties.Resources.Ojo_Cerrado;
+            }
+            else
+            {
+                txtContraseña.UseSystemPasswordChar = true;
+                picVerContraseña.Image = PROYECTO_FINAL.Properties.Resources.monkey_599687;
+            }
+        }
+
+        private void picVerContraseña_Click(object sender, EventArgs e)
+        {
+
+            
         }
     }
 }

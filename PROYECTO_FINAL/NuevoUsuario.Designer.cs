@@ -32,6 +32,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,7 +50,12 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.nightControlBox1 = new ReaLTaiizor.Controls.NightControlBox();
             this.button2 = new ReaLTaiizor.Controls.Button();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.picVerContraseña = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picVerContraseña)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -116,6 +122,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(205, 20);
             this.txtContraseña.TabIndex = 8;
+            this.txtContraseña.TextChanged += new System.EventHandler(this.txtContraseña_TextChanged);
             // 
             // txtNombre
             // 
@@ -242,11 +249,41 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.txtId.Size = new System.Drawing.Size(201, 20);
             this.txtId.TabIndex = 6;
             // 
+            // picVerContraseña
+            // 
+            this.picVerContraseña.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.picVerContraseña.Image = global::PROYECTO_FINAL.Properties.Resources.monkey_599687;
+            this.picVerContraseña.Location = new System.Drawing.Point(378, 319);
+            this.picVerContraseña.Name = "picVerContraseña";
+            this.picVerContraseña.Size = new System.Drawing.Size(19, 20);
+            this.picVerContraseña.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picVerContraseña.TabIndex = 29;
+            this.picVerContraseña.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(403, 319);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(71, 20);
+            this.checkBox1.TabIndex = 28;
+            this.checkBox1.Text = "Mostrar";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // NuevoUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.picVerContraseña);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
@@ -268,6 +305,8 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             this.Text = "NuevoUsuario";
             this.Load += new System.EventHandler(this.NuevoUsuario_Load_1);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picVerContraseña)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,5 +331,8 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         private ReaLTaiizor.Controls.NightControlBox nightControlBox1;
         private ReaLTaiizor.Controls.Button button2;
         private TextBox txtId;
+        private PictureBox picVerContraseña;
+        private CheckBox checkBox1;
+        private ErrorProvider errorProvider1;
     }
 }

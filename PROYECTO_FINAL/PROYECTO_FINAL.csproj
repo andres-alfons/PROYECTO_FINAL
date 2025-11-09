@@ -190,7 +190,10 @@
     <None Include="Resources\home_6821152 %281%29.png" />
     <Content Include="Resources\humedad.png" />
     <Content Include="Resources\Imagen-iniciosession.jpg" />
+    <None Include="Resources\Monito.png" />
+    <None Include="Resources\monkey_599687.png" />
     <Content Include="Resources\norte.png" />
+    <None Include="Resources\Ojo_Cerrado.png" />
     <Content Include="Resources\pronostico-del-tiempo.png" />
     <None Include="Resources\riego-por-goteo.jpg" />
     <Content Include="Resources\temperatura-alta.png" />

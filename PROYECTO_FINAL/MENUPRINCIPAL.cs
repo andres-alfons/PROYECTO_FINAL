@@ -42,7 +42,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             ObtenerDatosClimaAsync();
             this.StartPosition = FormStartPosition.CenterScreen;
             originalFormSize = this.Size;
-
+            timerGraficas.Start();
             cargarPlantas();
             puerto = new ServicioPuerto("COM3", 9600);
             puerto.DatosRecibidos += Puerto_DatosRecibidos;
@@ -333,28 +333,32 @@ namespace PROYECTO_RIEGO_AUTOMATICO
         }
         private void timerGraficaReal()
         {
-            var listaDatos = servicioClima.MostrarTodos()?.Lista;
+            var listaDatos = servicioClima.MostrarTodos().Lista;
 
             if (listaDatos == null || listaDatos.Count == 0)
                 return;
 
-            // Tomar solo los últimos 10 registros
             var ultimosDatos = listaDatos.Count > 10
                 ? listaDatos.Skip(listaDatos.Count - 10).ToList()
                 : listaDatos;
 
-            chartTemperatura.Series["TEMPERATURA DEL AMBIENTE"].Points.Clear();
-            chartRiego.Series["HUMEDAD DEL SUELO"].Points.Clear();
+            var serieTemp = chartTemperatura.Series["TEMPERATURA DEL AMBIENTE"];
+            var serieHum = chartRiego.Series["HUMEDAD DEL SUELO"];
 
-            int contador = 0;
+            serieTemp.Points.Clear();
+            serieHum.Points.Clear();
+
+            int contador = 1;
 
             foreach (var item in ultimosDatos)
             {
-                contador += 10;
-                chartTemperatura.Series["TEMPERATURA DEL AMBIENTE"].Points.AddXY(contador, item.Temperatura_Ambiente);
-                chartRiego.Series["HUMEDAD DEL SUELO"].Points.AddXY(contador, item.Humedad_Suelo);
+                serieTemp.Points.AddXY(contador, item.Temperatura_Ambiente);
+                serieHum.Points.AddXY(contador, item.Humedad_Suelo);
+                contador++;
             }
         }
+    
+
 
         private void GuardarCambios()
         {
