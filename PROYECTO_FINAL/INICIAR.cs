@@ -2,8 +2,6 @@
 using ENTITY;
 using System;
 using System.Windows.Forms;
-using static Guna.UI2.WinForms.Suite.Descriptions;
-
 namespace PROYECTO_RIEGO_AUTOMATICO
 {
     public partial class INICIAR : Form

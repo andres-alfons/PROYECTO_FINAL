@@ -334,18 +334,11 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             if (listaDatos == null || listaDatos.Count == 0)
                 return;
 
-            // 🔹 Ordenar los datos por fecha
+            // 🔹 Ordenar por fecha
             var datosOrdenados = listaDatos.OrderBy(d => d.Fecha).ToList();
 
-            // 🔹 Tomar los datos de la última hora
-            DateTime horaLimite = DateTime.Now.AddHours(-1);
-            var ultimosDatos = datosOrdenados
-                .Where(d => d.Fecha >= horaLimite)
-                .ToList();
-
-            // 🔹 Si no hay suficientes, usar los últimos 6 (1 hora / cada 10 min = 6 puntos)
-            if (ultimosDatos.Count < 6)
-                ultimosDatos = datosOrdenados.Skip(Math.Max(0, datosOrdenados.Count - 6)).ToList();
+            // 🔹 Tomar los 10 últimos registros
+            var ultimosDatos = datosOrdenados.Skip(Math.Max(0, datosOrdenados.Count - 10)).ToList();
 
             var serieTemp = chartTemperatura.Series["TEMPERATURA DEL AMBIENTE"];
             var serieHum = chartRiego.Series["HUMEDAD DEL SUELO"];
@@ -353,45 +346,47 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             serieTemp.Points.Clear();
             serieHum.Points.Clear();
 
-            // 🔹 Crear los puntos cada 10 minutos dentro de la última hora
-            DateTime inicio = DateTime.Now.AddHours(-1);
-            DateTime actual = inicio;
-
-            for (int i = 0; i <= 6; i++)
+            // 🔹 Agregar puntos según la hora real (Eje X = hora, Eje Y = valor)
+            foreach (var item in ultimosDatos)
             {
-                // Buscar el dato más cercano a este instante (dentro de ±5 minutos)
-                var dato = ultimosDatos
-                    .OrderBy(d => Math.Abs((d.Fecha - actual).TotalMinutes))
-                    .FirstOrDefault();
+                // Eje X: hora del registro
+                double xValue = item.Fecha.ToOADate();
 
-                if (dato != null)
-                {
-                    double x = (actual - inicio).TotalMinutes; // eje X en minutos desde el inicio
-                    serieTemp.Points.AddXY(x, dato.Temperatura_Ambiente);
-                    serieHum.Points.AddXY(x, dato.Humedad_Suelo);
-                }
-
-                actual = actual.AddMinutes(10);
+                serieTemp.Points.AddXY(xValue, item.Temperatura_Ambiente);
+                serieHum.Points.AddXY(xValue, item.Humedad_Suelo);
             }
 
-            // 🔹 Configurar los ejes
+            // 🔹 Configurar el área de Temperatura
             var areaTemp = chartTemperatura.ChartAreas[0];
-            areaTemp.AxisX.Minimum = 0;
-            areaTemp.AxisX.Maximum = 60;
-            areaTemp.AxisX.Interval = 10;
-            areaTemp.AxisX.Title = "Tiempo (min)";
+            areaTemp.AxisX.LabelStyle.Format = "HH:mm"; // mostrar horas
+            areaTemp.AxisX.IntervalType = DateTimeIntervalType.Minutes;
+            areaTemp.AxisX.Interval = 6; // cada 6 min aprox
+            areaTemp.AxisX.Title = "Hora";
             areaTemp.AxisY.Title = "Temperatura (°C)";
+            areaTemp.AxisX.MajorGrid.LineColor = Color.LightGray;
+            areaTemp.AxisY.MajorGrid.LineColor = Color.LightGray;
+            areaTemp.AxisX.LabelStyle.Angle = -45; // girar etiquetas para mejor lectura
+            areaTemp.AxisX.Minimum = ultimosDatos.First().Fecha.ToOADate();
+            areaTemp.AxisX.Maximum = ultimosDatos.Last().Fecha.ToOADate();
 
+            // 🔹 Configurar el área de Humedad
             var areaHum = chartRiego.ChartAreas[0];
-            areaHum.AxisX.Minimum = 0;
-            areaHum.AxisX.Maximum = 60;
-            areaHum.AxisX.Interval = 10;
-            areaHum.AxisX.Title = "Tiempo (min)";
-            areaHum.AxisY.Title = "Humedad del suelo (%)";
+            areaHum.AxisX.LabelStyle.Format = "HH:mm";
+            areaHum.AxisX.IntervalType = DateTimeIntervalType.Minutes;
+            areaHum.AxisX.Interval = 6;
+            areaHum.AxisX.Title = "Hora";
+            areaHum.AxisY.Title = "Humedad del Suelo (%)";
+            areaHum.AxisX.MajorGrid.LineColor = Color.LightGray;
+            areaHum.AxisY.MajorGrid.LineColor = Color.LightGray;
+            areaHum.AxisX.LabelStyle.Angle = -45;
+            areaHum.AxisX.Minimum = ultimosDatos.First().Fecha.ToOADate();
+            areaHum.AxisX.Maximum = ultimosDatos.Last().Fecha.ToOADate();
 
+            // 🔹 Actualizar gráficos
             chartTemperatura.Update();
             chartRiego.Update();
         }
+
 
         private void GuardarCambios()
         {
@@ -747,6 +742,9 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             timerGraficaReal();
             grilla2.CellValueChanged += grilla2_CellValueChanged;
             grilla2.CurrentCellDirtyStateChanged += grilla2_CurrentCellDirtyStateChanged;
+            button9.PerformClick();
+            button3.PerformClick();c
+
 
 
         }
