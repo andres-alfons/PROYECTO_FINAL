@@ -154,7 +154,22 @@ namespace PROYECTO_RIEGO_AUTOMATICO
                                             "Alerta Climática", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-
+                    var cultivos = serviciosPlanta.ObtenerTodos();
+                    foreach (var c in cultivos.Lista)
+                    {
+                        if (c.nivel_optimo_temperatura < weatherInfo.main.temp)
+                        {
+                            CrearAlertaSiNoExiste("Temperatura no Optima",
+                            $"La temperatura actual es de {weatherInfo.main.temp}°C, y esta sobrepasa lo optimo para la planta {c.NombrePlanta} con id {c.IdPlanta}.",
+                            "Medio");
+                        }
+                        if(c.nivel_optimo_humedad < weatherInfo.main.temp)
+                        {
+                            CrearAlertaSiNoExiste("Humedad no Optima",
+                            $"La humedad actual es de {weatherInfo.main.temp}°C, y esta sobrepasa lo optimo para la planta {c.NombrePlanta} con id {c.IdPlanta}.",
+                            "Medio");
+                        }
+                    }
                     if (weatherInfo.main.temp > 35)
                         CrearAlertaSiNoExiste("Alta Temperatura",
                             $"La temperatura actual es de {weatherInfo.main.temp}°C, lo cual supera el umbral seguro.",
@@ -743,7 +758,7 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             grilla2.CellValueChanged += grilla2_CellValueChanged;
             grilla2.CurrentCellDirtyStateChanged += grilla2_CurrentCellDirtyStateChanged;
             button9.PerformClick();
-            button3.PerformClick();c
+            button3.PerformClick();
 
 
 

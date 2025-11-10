@@ -25,7 +25,6 @@ namespace PROYECTO_RIEGO_AUTOMATICO
             }
             Cultivo nuevaPlanta = new Cultivo();
 
-            nuevaPlanta.IdPlanta = int.Parse(txtId.Text);
             nuevaPlanta.NombrePlanta = txtNombre.Text;
             nuevaPlanta.Descripcion = txtDescripcion.Text;
             nuevaPlanta.nivel_optimo_humedad = float.Parse(txtNivelHumedad.Text);
